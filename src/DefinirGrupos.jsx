@@ -74,17 +74,19 @@ export default function DefinirGrupos() {
             {listGroups.map((group, index )=> {
                 return (
                     <div key={`Group${index}`}>
-                        <div>Grupo {index + 1}</div>
+                        <div style={{paddingTop: '20px', paddingBottom: '10px', fontWeight: 'bold', fontSize: '2rem' }}>Grupo {index + 1}</div>
+                        <table>
+
                         {group.map(participante => {
-                            let concatString = ''
+                            const values = []
                             for (const [_, value] of Object.entries(participante)) {
-                                concatString =  concatString + ` ${value} - - | - - `
-                            }
-                            return (<div key={concatString}>{concatString}</div>)
+                                values.push(value)
+                            }                            
+                            return (<tr>{
+                                values.map(v => (<td key={v}>{v}</td>))
+                                }</tr>)
                         })}
-                        <div>{'     '}</div>
-                        <div>{'     '}</div>
-                        <div>{'     '}</div>
+                        </table>
                     </div>
                     )
                 })}
